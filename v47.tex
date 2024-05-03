@@ -1,0 +1,39 @@
+\input{headereng.tex}
+
+\subject{V47}
+\title{Molar heat of CU}
+\date{
+  Experiment date: DATUM
+  \hspace{3em}
+  Submission: DATUM
+}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+\tableofcontents
+\newpage
+\setcounter{page}{1}
+\input{ziel.tex}
+\input{theorie.tex}
+\input{aufbau.tex}
+%\input{durchfuehrung.tex}
+\input{auswertung.tex}
+\input{diskussion.tex}
+
+\newpage
+\printbibliography
+\nocite{ap47}
+\nocite{matplotlib}
+\nocite{numpy}
+\nocite{scipy}
+\nocite{uncertainties}
+\nocite{reback2020pandas}
+
+\newpage
+%\includepdf[scale=0.7,pages=1,pagecommand=\section*{Anhang}\thispagestyle{empty}]{messdaten.pdf}
+%\addcontentsline{toc}{section}{\protect\numberline{}Anhang}
+%\includepdf[scale = 0.7, pages=-]{messdaten.pdf}
+
+\end{document}
