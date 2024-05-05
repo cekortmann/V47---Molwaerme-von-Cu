@@ -2,3 +2,57 @@
 \label{sec:Auswertung}
 
 \input{fehlerrechnung.tex}
+
+
+The used copper sample has a weight of $m= \, \unit{\kilo \gram}$.
+In order to determine the molar heat capacity of copper, we need to know some of its characteristics.
+So the important information are the molar volume $V_{\text{m,Cu}}$, the molar mass $M_{\text{Cu}}$, the density $\rho_{\text{Cu}}$ and 
+the compression coefficient $\kappa_{\text{Cu}}$. 
+The material-specific values can be found in \cite{6} as
+\begin{align*}
+    \rho_{\text{Cu}}&= 8920\,  \frac{\unit{\kilo \gram}}{\unit{\meter}^3} \; , \\
+    V_{\text{m,Cu}}&=7.11 \cdot 10^{-6}\, \frac{\unit{\meter}^3}{\text{mol}} \; ,\\
+    M_{\text{Cu}}&= V_{\text{m,Cu}} \cdot \rho_{\text{Cu}}= 0.0634\, \frac{\unit{\kilo \gram}}{\text{mol}}\; ,\\
+    \kappa_{\text{Cu}}&= 140\, \unit{\giga \pascal}\; .
+\end{align*}
+In addition, the speed of sound in copper \cite{ap47} is needed for further calculations
+\begin{align*}
+    v_{\text{l}}&=4700\, \unit{\frac{\meter}{\second}}\; ,\\
+v_{\text{t}}&=2260\, \unit{\frac{\meter}{\second}} \; .
+\end{align*}
+
+\subsection{Calculation of $C_{p}$}
+The measurements to determine the heat capacity at constant pressure are displayed in \autoref{tab:Cp}.
+To calculate the exact values, that are shown in the last column, \autoref{eqn:Cp} is used. 
+
+
+\subsection{Calculation of $C_{V}$}
+Coppers heat capacity at constant volume can be calculated by using \autoref{eqn:CV}. The values recorded this are shown in \autoref{tab:CV}.
+
+
+\subsection{Calculation of the Debye temperature}% $\Theta _{\text{D}} $ }
+
+When calculating the Debye temperature, only $C_{{V}}$ below $170\, \unit{\kelvin}$ are taken into account.
+Then \autoref{eqn:Debye} can be used to find the proportion $\frac{\Theta_{\text{D}}}{T}$.
+By multiplying the temperature, a value for $\Theta _{\text{D}}$ can be found.
+
+
+
+The average leads to the final value of
+\begin{equation*}
+    \Theta _{\text{D}}= unknown     \; .
+\end{equation*}
+
+The theoretical value for $\Theta _{\text{D}}$ can be determined by using \autoref{eqn:theoDebye}.
+The number of particles is given by 
+\begin{equation*}
+    N=N_{\text{A}}\; \frac{m}{M}=3.076 \cdot 10^{24}\; .
+\end{equation*}
+By considering the sample's weight and copper's density the volume is given as 
+\begin{equation*}
+    V=\frac{m}{\rho}=3.632 \cdot 10^{-5} \, \unit{\meter}^3\; .
+\end{equation*}
+With these values, the Debye temperature results in
+\begin{equation*}
+    \Theta_{\text{D}}=330.93\, \unit{\kelvin}\; .
+\end{equation*}
