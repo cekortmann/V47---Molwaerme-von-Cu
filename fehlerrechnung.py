@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 import numpy as np
+import pandas as pd
 import csv
 from numpy import sqrt
 import scipy.constants as const
@@ -36,11 +37,11 @@ while i<27:
     T1[i]=T(R1[i])
     i=i+1
 
-print(T(R1[2]))
+#print(T(R1[2]))
 #print(len(Vcu))
 #print(len(t1))
-print(T(R1[len(R1)-1]))
-print(T(111))
+#print(T(R1[len(R1)-1]))
+#print(T(111))
 dt= unp.uarray([0,180,309,360,730,1160,1425,1674,2190,2454,2697,2996,3288,3606,3708,4042,4369,4712,5225,5612,5980,6429,7008,7440,8034,8541,9032],[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1])
 j=1
 while j<27:
@@ -60,14 +61,24 @@ while k<27:
 dT[0]=1
 
 i=0
-def E(U,I,dt):
-        return U*I*dt
-        
-E = E(Vcu,Acu,dt)
+#def E(U,I,dt):
+#        return U*I*dt
+    
+E= unp.uarray(nullen,nullen)
+while i<26:
+    E[i]= Vcu[i]*Acu[i]*dt[i]
+    i+=1
 
-def C_p(Mm,E,dT):
-    return E/dT
-uC_p=C_p(Mm,E,dT)*Mm
+#def C_p(Mm,E,dT):
+#    return E/dT
+
+uC_p= unp.uarray(nullen,nullen)
+
+q=0
+while q<26:
+    uC_p[q]=E[q]/dT[q]*Mm
+    #print(uC_p[i])
+    q+=1
 
 def alpha1(T):
    return ((T-70)*0.15+7)*10**(-6)
@@ -80,40 +91,92 @@ while q<26:
     alpha[q]=((T1[q]-70)*0.15+7)*10**(-6)
     q+=1
 
+i=0
 while i<26:
-    uC_v[i]= uC_p[i+1]-9*alpha[i]**2*kappa*V_m*T1[i]
+    uC_v[i]= uC_p[i]-9*alpha[i]**2*kappa*V_m*T1[i]
     i+=1
 
 #print(dt)
 #print(dT)
+#print(T1)
+#print(dT)
 #print(uC_p)
-#print(E)
-print(uC_v)
 #print(alpha)
-print(len(uC_v))
+#print(kappa)
+#print(uC_v)
  
-#np.round(alpha,3)
 
-n_spalten=11
-nullen = np.zeros(n_spalten)
-thetadT= unp.uarray([2.4,3.1,2.9,2.6,2.3,2.0,2.1,2.2,2.2,2.1,1.7],[0,0,0,0,0,0,0,0,0,0,0])
+thetadT= unp.uarray([2.4,3.1,2.9,2.6,2.3,2.0,2.1,2.2,2.2,2.1,1.7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
 theta = unp.uarray(nullen,nullen)
 i=0
 
-while i<11:
+while i<26:
     theta[i]=thetadT[i]*T1[i]
     i+=1
 
     
-print(theta)
-print(np.mean(theta))
+#print(theta)
+#print(np.mean(theta))
+#print(theta)
 
-with open('table1.csv', 'w', newline='') as file:
+#with open('table1.csv', 'w', newline='') as file:
+#    writer = csv.writer(file)
+
+    # Schreiben Sie die Kopfzeile in die CSV-Datei, wenn gewünscht
+#    writer.writerow(['dT', 'Vcu', 'Acu', 'dt','uC_p'])
+
+    # Schreiben Sie die Inhalte der Arrays in die CSV-Datei
+#    for dT,Vcu, Acu, dt,uC_p in zip( dT,Vcu, Acu, dt,uC_p):
+#        writer.writerow([ dT,Vcu, Acu, dt,uC_p])
+        
+data = {
+    "T1": T1,
+    "uC_p": uC_p,
+    "alpha": alpha,
+    "uC_v": uC_v
+}
+
+df = pd.DataFrame(data)
+
+# Pfad zur CSV-Datei
+csv_file = "table2.csv"
+
+# Schreibe das DataFrame in die CSV-Datei
+df.to_csv(csv_file, index=False)
+
+data = {
+    "uC_v": uC_v,
+    "thetadT": thetadT,
+    "T1": T1,
+    "theta": theta
+}
+
+df = pd.DataFrame(data)
+
+# Pfad zur CSV-Datei
+csv_file = "table3.csv"
+
+# Schreibe das DataFrame in die CSV-Datei
+df.to_csv(csv_file, index=False)
+
+#with open('table2.csv', 'w', newline='') as file:
+#    writer = csv.writer(file#)
+
+    # Schreiben Sie die Kopfzeile in die CSV-Datei, wenn gewünscht
+#    writer.writerow(['T1', 'uC_p', 'alpha', 'uC_v'])
+
+    # Schreiben Sie die Inhalte der Arrays in die CSV-Datei
+#    for T1, uC_p, alpha, uC_v in zip(T1, uC_p, alpha, uC_v):
+#        writer.writerow([ T1, uC_p, alpha, uC_v])
+
+
+
+with open('table3.csv', 'w', newline='') as file:
     writer = csv.writer(file)
 
     # Schreiben Sie die Kopfzeile in die CSV-Datei, wenn gewünscht
-    writer.writerow(['dT', 'Vcu', 'Acu', 'dt','uC_p'])
+    writer.writerow(['uC_p', 'thetadT', 'T1', 'theta'])
 
     # Schreiben Sie die Inhalte der Arrays in die CSV-Datei
-    for dT,Vcu, Acu, dt,uC_p in zip( dT,Vcu, Acu, dt,uC_p):
-        writer.writerow([ dT,Vcu, Acu, dt,uC_p])
+    for uC_p, thetadT, T1, theta in zip(uC_p, thetadT, T1, theta):
+        writer.writerow([uC_p, thetadT, T1, theta])
