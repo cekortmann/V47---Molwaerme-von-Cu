@@ -7,9 +7,10 @@ The molar heat describes the quantity of heat, that is needed to warm one Mol by
 \end{equation*}
 The molar heat can be reduced to the pressure or to the volume. In this experiment we measure the molar heat with a constant pressure $C_{\symup{p}}$. 
 For a constant volume a very high pressure would be needed. We can transform $C_{\symup{p}}$ to $C_{\symup{V}}$ by using 
-\begin{equation*}
+\begin{equation}
     C_{\symup{V}} = C_{\symup{p}} - 9{\alpha}^2\kappa V_{\symup{0}}T \,\, .
-\end{equation*}
+    \label{eqn:CV}
+\end{equation}
 Here $\alpha$ describes the expansion coefficient and $\kappa$ the compressibilities.
 The Debye temperature we mentioned before is material specific and depends on the phonon frequency. If the temperature is below this Debye temperature,
 we have to consider quantum effects just as freezing of degrees of freedom. Above the Debye temperature all natural vibration states are occupied. 
@@ -82,10 +83,14 @@ The molar heat capacity at a constant volume can be calculated as
     C_V = 9\symup{N_A k_B}\left(\frac{T}{\symup{\theta_D}}\right)^3 \int_{0}^{\symup{\theta_D}/T}\frac{x^4\symup{e}^x}{\left(\symup{e}^x-1\right)^2}\, \symup{d}x \,\, .
 \end{equation*}
 Here the Debye temperature is defined as
+\begin{equation}
+    \symup{\theta_D} = \frac{\hbar \omega_D}{\symup{k_B}} = \frac{\hbar v_{eff}}{\symup{k_B}}\left(6\pi^2\frac{\symup{N_A}}{V}\right)^{1/3}
+    \label{eqn:theoDebye}
+\end{equation}
+with the effective spead of sound $v_{eff}$ \
 \begin{equation*}
-    \symup{\theta_D} = \frac{\hbar \omega_D}{\symup{k_B}} = \frac{\hbar v_s}{\symup{k_B}}\left(6\pi^2\frac{\symup{N_A}}{V}\right)^{1/3}
+    v_{eff}^3 = 3 \frac{v_l^3 v_t^3}{v_t^3 + 2v_l^3}
 \end{equation*}
-with the mean spead of sound $v_s$. \\
 The approximation for very low and very high temperatures is given by 
 \begin{equation*}
     C_V = 
@@ -100,9 +105,10 @@ the Debye model.
 
 \subsection{Calculation of $C_p$}
 The molar heat at a constant pressure can be calculated by 
-\begin{equation*}
+\begin{equation}
     C_p = \frac{M}{m} \cdot \frac{E}{\Delta T} \,\, , 
-\end{equation*}
+    \label{eqn:Cp}
+\end{equation}
 where $M$ is the molecular weight and $m$ is the weight of the sample. 
 The supplied energy $E$ is determined by 
 \begin{equation*}

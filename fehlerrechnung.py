@@ -91,6 +91,8 @@ while i<26:
 print(uC_v)
 #print(alpha)
 print(len(uC_v))
+ 
+#np.round(alpha,3)
 
 n_spalten=11
 nullen = np.zeros(n_spalten)
@@ -110,8 +112,8 @@ with open('table1.csv', 'w', newline='') as file:
     writer = csv.writer(file)
 
     # Schreiben Sie die Kopfzeile in die CSV-Datei, wenn gewünscht
-    writer.writerow(['R1', 'T1', 'ARez', 'Vrez', 'R1', 't1'])
+    writer.writerow(['dT', 'Vcu', 'Acu', 'dt','uC_p'])
 
     # Schreiben Sie die Inhalte der Arrays in die CSV-Datei
-    for R1, T1, Acu, Vcu, R1, t1 in zip(R1, T1, Acu, Vcu, R1, t1):
-        writer.writerow([R1, T1, Acu, Vcu, R1, t1])
+    for dT,Vcu, Acu, dt,uC_p in zip( dT,Vcu, Acu, dt,uC_p):
+        writer.writerow([ dT,Vcu, Acu, dt,uC_p])
