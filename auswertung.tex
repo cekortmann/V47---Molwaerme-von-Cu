@@ -34,15 +34,32 @@ Coppers heat capacity at constant volume can be calculated by using \autoref{eqn
 \subsection{Calculation of the Debye temperature}% $\Theta _{\text{D}} $ }
 
 When calculating the Debye temperature, only $C_{{V}}$ below $170\, \unit{\kelvin}$ are taken into account.
-Then \autoref{eqn:Debye} can be used to find the proportion $\frac{\Theta_{\text{D}}}{T}$.
-By multiplying the temperature, a value for $\Theta _{\text{D}}$ can be found.
+Then \cite{ap47} can be used to find the proportion $\frac{\Theta_{\text{D}}}{T}$.
+By multiplying the temperature, a value for $\Theta _{\text{D}}$ can be found. The values of $C_V$, $\frac{\symup{\theta_D}}{T}$, $T$ and 
+$\symup{\theta_D}$ are shown in \autoref{tab:debyetemp}.
 
 
 
 The average leads to the final value of
 \begin{equation*}
-    \Theta _{\text{D}}= unknown     \; .
+    \Theta _{\text{D}}= (269.18 \pm  0.17)\,\unit{\kelvin} \; .
 \end{equation*}
+
+In \autoref{fig:cv} the values aof $C_V$ are plotted in dependence of the temperature.
+\begin{figure}
+    \centering
+        \includegraphics[width=0.5\textwidth]{build/cv.pdf}
+        \caption{$C_V$ in dependence of the temperature.}
+        \label{fig:cv}
+\end{figure}
+
+%\begin{figure}
+ %   \centering
+  %      \includegraphics[width=0.5\textwidth]{build/cv170.pdf}
+   %     \caption{$C_V$ in dependence of the temperature up to $170\,\unit{\kelvin}$.}
+    %    \label{fig:cv170}
+%\end{figure}
+
 
 The theoretical value for $\Theta _{\text{D}}$ can be determined by using \autoref{eqn:theoDebye}.
 The number of particles is given by 
