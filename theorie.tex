@@ -1,3 +1,110 @@
 \section{Theory}
-\label{sec:Theorie}
+\label{sec:theory}
 
+The molar heat describes the quantity of heat, that is needed to warm one Mol by one Kelvin. This is characterized by the formula 
+\begin{equation*}
+    C = \frac{\Delta Q}{\Delta T} \,\, . 
+\end{equation*}
+The molar heat can be reduced to the pressure or to the volume. In this experiment we measure the molar heat with a constant pressure $C_{\symup{p}}$. 
+For a constant volume a very high pressure would be needed. We can transform $C_{\symup{p}}$ to $C_{\symup{V}}$ by using 
+\begin{equation*}
+    C_{\symup{V}} = C_{\symup{p}} - 9{\alpha}^2\kappa V_{\symup{0}}T \,\, .
+\end{equation*}
+Here $\alpha$ describes the expansion coefficient and $\kappa$ the compressibilities.
+The Debye temperature we mentioned before is material specific and depends on the phonon frequency. If the temperature is below this Debye temperature,
+we have to consider quantum effects just as freezing of degrees of freedom. Above the Debye temperature all natural vibration states are occupied. 
+
+\subsection{Classical theory of the molar heat}
+\label{sec:classic}
+In a solid, the energy is equally distributed on its degrees of freedom. A solid has six degrees of freedom, three for translation and three for rotation.
+Each atom has an energy of $\frac{1}{2}\symup{k_B}T$ per degree of freedom. So the overall the energy is $E=3\symup{k_B}T$, where $\symup{k_B}$ 
+is the Boltzmann constant. For one Mol we get 
+\begin{equation*}
+    E = 3\symup{k_B}\symup{N_A}T = \symup{R}T \,\, ,
+\end{equation*}
+where $\symup{N_A}$ is the Avogadro constant and $\symup{R}$ is the general gas constant. If we describe the specific heat capacity at a constant volume, 
+we get the Dulong-Petit law
+\begin{equation*}
+    C_V = \left.\frac{\symup{\partial}U}{\symup{\partial}T}\right|_V=3 \symup{R} \,\, .
+\end{equation*}
+The Dulong-Petit law does not depend on material or temperature. At low temperatures measurements show no agreement. A classical description 
+only approximates high temperatures ($T>> \symup{\theta_D}$).
+
+\subsection{The Einstein model}
+\label{sec:einstein}
+The Einstein model takes quantum effects into account. It describes the solid as an oscillator. All oscillations are assumed to have the
+uniform frequency $\omega_E$. Einstein considers the quantization of energy, which he assumes can only change in $\hbar \omega_E$. 
+The Boltzmann distribution 
+\begin{equation*}
+    W(n)= \symup{exp}\left(-\frac{n\hbar \omega_E}{\symup{k_B}T}\right)
+\end{equation*}
+describes the probability that the oscillator has the energy $n\hbar\omega_E$ (n $\in$ N) at a given temperature. 
+The mean energy is calculated by a summation and a normalization of all possible energies
+\begin{equation*}
+    \langle E \rangle = \frac{\hbar \omega_E}{\symup{exp} \left(\frac{\hbar \omega E}{\symup{k_B}T}\right)-1} \,\, .
+\end{equation*}
+With the Einstein temperature 
+\begin{equation*}
+    \symup{\theta_E} = \frac{\hbar \omega_E}{\symup{k_B}}
+\end{equation*}
+the molar heat at a constant volume can be depicted by 
+\begin{equation*}
+    C_V = 3\symup{N_A k_B}\left(\frac{\symup{\theta_E}}{T}\right)^2 \frac{\symup{e}^{\symup{\theta_E}/T}}{\left(\symup{e}^{\symup{\theta_E}/T}-1\right)^2} \,\, .
+\end{equation*}
+If we approximate the molar heat for very low and very high temperatures we get 
+\begin{equation*}
+    C_V = 
+    \begin{cases}
+        3 \symup{R}\left(\frac{\symup{\theta_E}}{T}\right)^2 \frac{\symup{e}^{\symup{\theta_E}/T}}{\left(\symup{e}^{\symup{\theta_E}/T}-1\right)^2} , & T << \symup{\theta_E} \\
+        3 \symup{R} , T >> \symup{\theta_E}
+    \end{cases}
+    \, \, .
+\end{equation*}
+Again, for high temperatures we get the Dulong-Petit law, which approximates the experimental capacity good. For low temperatures we expect 
+a $T^3$-dependence at the real measured values, that is not described by the Einstein model.
+
+\subsection{The Debye model}
+\label{sec:debye}
+The Debye model introduces a spectral distribution $Z(\omega)$. With the Debye wave vector $q_D$ we get a linear dispersion
+$\omega_i = v_i q_D$ for three branches $i$ with phase velocity $v_i$. For a crystal with a finite number of atoms $\symup{N_A}$ the 
+number of oscillation frequencies is also finite. We get one frequency for each atom and each spatial direction, so that we have a total 
+of $3\symup{N_A}$ oscillation frequencies. The surfaces of the same frequency are spherical surfaces with a volume of $\left(\frac{2\pi}{L}\right)^2$, 
+so that we get the Debye wave vector 
+\begin{equation*}
+    q_D = \left(6\pi^2\frac{\symup{N_A}}{V}\right)^{1/3} \,\,. 
+\end{equation*}
+The Debye frequency is given by 
+\begin{equation*}
+    \omega_D = q_D v_i = v_i \left(6\pi^2 \frac{\symup{N_A}}{V}\right)^{1/3} \,\, .
+\end{equation*}
+The molar heat capacity at a constant volume can be calculated as 
+\begin{equation*}
+    C_V = 9\symup{N_A k_B}\left(\frac{T}{\symup{\theta_D}}\right)^3 \int_{0}^{\symup{\theta_D}/T}\frac{x^4\symup{e}^x}{\left(\symup{e}^x-1\right)^2}\, \symup{d}x \,\, .
+\end{equation*}
+Here the Debye temperature is defined as
+\begin{equation*}
+    \symup{\theta_D} = \frac{\hbar \omega_D}{\symup{k_B}} = \frac{\hbar v_s}{\symup{k_B}}\left(6\pi^2\frac{\symup{N_A}}{V}\right)^{1/3}
+\end{equation*}
+with the mean spead of sound $v_s$. \\
+The approximation for very low and very high temperatures is given by 
+\begin{equation*}
+    C_V = 
+    \begin{cases}
+        \frac{12\pi^4}{5}\symup{R}\left(\frac{T}{\symup{\theta_D}}\right)^3 , & T << \symup{\theta_D} \\
+        3\symup{R} , & T>> \symup{\theta_D}
+    \end{cases}
+    \,\, .
+\end{equation*}
+The dependence for high temperatures equals the Dulong-Petit law again. For low temperatures the $T^3$-dependence is correctly pictured by 
+the Debye model.
+
+\subsection{Calculation of $C_p$}
+The molar heat at a constant pressure can be calculated by 
+\begin{equation*}
+    C_p = \frac{M}{m} \cdot \frac{E}{\Delta T} \,\, , 
+\end{equation*}
+where $M$ is the molecular weight and $m$ is the weight of the sample. 
+The supplied energy $E$ is determined by 
+\begin{equation*}
+    E = U \cdot I \cdot \Delta t
+\end{equation*}
