@@ -14,6 +14,8 @@ from uncertainties.unumpy import (nominal_values as noms,   # Wert:             
 m = 0.342
 M = 0.0634
 Mm= M/m
+kappa=140*10**9
+V_m=7.11*10**(-6)
 
 def T(R):
     return (0.00134*R**2+2.296*R-243.02+273.15)
@@ -24,10 +26,13 @@ Vcu= unp.uarray([16.56,16.09,16.11,15.92,16.07,16.16,16.19,16.22,16.27,16.29,16.
 
 R1  = unp.uarray([24.9,27.3,28.6,29.2,33.3,37.8,40.4,42.7,47.5,50.0,52.3,55.1,57.6,59.6,61.0,64.1,67.2,69.9,73.8,77.0,80.0,83.6,87.4,91.5,96.0,100.0,104.0],[0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1])
 t1 = unp.uarray([0,180,309,360,730,1160,1425,1674,2190,2454,2697,2996,3288,3606,3708,4042,4369,4712,5225,5612,5980,6429,7008,7440,8034,8541,9032],[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1])
+n_spalten = 27
+nullen = np.zeros(n_spalten)
+T1 = unp.uarray(nullen,nullen)
 
-T1 = R1
 i=0
-while i>27:
+
+while i<27:
     T1[i]=T(R1[i])
     i=i+1
 
@@ -42,13 +47,17 @@ while j<27:
     dt[j]=t1[j]-t1[j-1]
     j=j+1
 
-dT= T1
+#print(T1)
+
+
+
+dT= unp.uarray(nullen,nullen)
 k=1
 
 while k<27:
     dT[k]=T1[k]-T1[k-1]
     k=k+1
-
+dT[0]=1
 
 i=0
 def E(U,I,dt):
@@ -58,12 +67,44 @@ E = E(Vcu,Acu,dt)
 
 def C_p(Mm,E,dT):
     return E/dT
+uC_p=C_p(Mm,E,dT)*Mm
+
+def alpha1(T):
+   return ((T-70)*0.15+7)*10**(-6)
+
+alpha =unp.uarray(nullen,nullen)
+uC_v=unp.uarray(nullen,nullen)
+
+q=0
+while q<26:
+    alpha[q]=((T1[q]-70)*0.15+7)*10**(-6)
+    q+=1
+
+while i<26:
+    uC_v[i]= uC_p[i+1]-9*alpha[i]**2*kappa*V_m*T1[i]
+    i+=1
 
 #print(dt)
-print(T1)
 #print(dT)
-#print(C_p(Mm,E,dT)*Mm)
+#print(uC_p)
 #print(E)
+print(uC_v)
+#print(alpha)
+print(len(uC_v))
+
+n_spalten=11
+nullen = np.zeros(n_spalten)
+thetadT= unp.uarray([2.4,3.1,2.9,2.6,2.3,2.0,2.1,2.2,2.2,2.1,1.7],[0,0,0,0,0,0,0,0,0,0,0])
+theta = unp.uarray(nullen,nullen)
+i=0
+
+while i<11:
+    theta[i]=thetadT[i]*T1[i]
+    i+=1
+
+    
+print(theta)
+print(np.mean(theta))
 
 with open('table1.csv', 'w', newline='') as file:
     writer = csv.writer(file)
